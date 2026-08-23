@@ -24,6 +24,7 @@ import {
   Globe,
 } from "lucide-react";
 import { LobbyQrModal } from "@/components/LobbyQrModal";
+import { ChatMessage } from "@/components/ChatMessage";
 
 /* ─── TYPES ─────────────────────────────────────────────────── */
 interface Language {
@@ -449,15 +450,15 @@ export default function Home() {
                   </div>
 
                   {/* Bubble */}
-                  <div className={`max-w-[80%] sm:max-w-[72%] ${isUser ? "items-end" : "items-start"} flex flex-col gap-1`}>
+                  <div className={`max-w-[83%] sm:max-w-[75%] flex flex-col gap-1 ${isUser ? "items-end" : "items-start"}`}>
                     <div
-                      className={`px-3.5 py-2.5 text-[13px] sm:text-sm leading-relaxed chat-bubble break-words
+                      className={`px-4 py-3 text-sm leading-relaxed break-words w-full
                         ${isUser
                           ? "bg-espresso text-surface rounded-2xl rounded-tr-sm"
                           : "bg-white border border-border-light text-espresso rounded-2xl rounded-tl-sm shadow-sm"
                         }`}
                     >
-                      {content}
+                      <ChatMessage content={content} isUser={isUser} />
                     </div>
                   </div>
                 </div>

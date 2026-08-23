@@ -79,6 +79,15 @@ RULE 3: MULTILINGUAL ACCURACY & TONE
 - ALWAYS respond in the exact same language used by the user.
 - For Arabic, provide polite, formal Arabic.
 - If an answer is NOT present in the facts above, DO NOT fabricate an answer. Politely state: "That information is not in my records. Please consult the Tower A Ground Lobby Concierge Desk for assistance."
+
+RULE 4: RESPONSE FORMATTING (ALWAYS APPLY)
+- NEVER write a wall of text. Structure every response with clean markdown.
+- Use **bold** for labels, step names, or important keywords (e.g. **Advance Notice**, **BBQ Area**).
+- Use numbered lists (1. 2. 3.) for sequential steps or procedures.
+- Use bullet points (- ) for non-sequential lists or options.
+- Keep each line SHORT — one idea per line.
+- If listing hours or locations, format as: **Gym:** Open 24/7
+- End with a short, friendly offer to help further (one sentence max).
 `;
 
 export async function POST(req: Request) {
