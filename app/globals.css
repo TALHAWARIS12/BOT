@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 18% 87%;
+    --foreground: 20 20% 15%;
+  }
+
+  body {
+    background-color: #E5DFD7;
+    color: #2C221E;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Luxury Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #E5DFD7;
+}
+::-webkit-scrollbar-thumb {
+  background: #DACFBF;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9A7B4F;
+}
+
+/* Gold Gradient Text */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #846338 0%, #D4AF37 50%, #9A7B4F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #846338 0%, #D4AF37 50%, #9A7B4F 100%);
+}
+
+.espresso-gradient-bg {
+  background: linear-gradient(180deg, #2C221E 0%, #231B17 100%);
+}
+
+/* Glassmorphism Card Style */
+.glass-card {
+  background: rgba(251, 249, 244, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid #E8E1D5;
+}
+
+/* Pulse Glow Animation */
+@keyframes goldPulse {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+  }
+}
+
+.animate-gold-pulse {
+  animation: goldPulse 3s infinite ease-in-out;
+}
