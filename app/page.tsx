@@ -22,7 +22,9 @@ import {
   FileText,
   AlertTriangle,
   Compass,
+  QrCode,
 } from "lucide-react";
+import { LobbyQrModal } from "@/components/LobbyQrModal";
 
 // Languages supported by Al Bayan AI
 interface Language {
@@ -49,6 +51,7 @@ export default function Home() {
   const [langMenuOpen, setLangMenuOpen] = useState(false);
   const [attachedImage, setAttachedImage] = useState<{ name: string; url: string } | null>(null);
   const [activeToolStatus, setActiveToolStatus] = useState<string | null>(null);
+  const [qrModalOpen, setQrModalOpen] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -217,8 +220,19 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Language Selection Dropdown */}
-        <div className="relative">
+        {/* Actions Controls (QR Display & Language Dropdown) */}
+        <div className="flex items-center gap-2.5">
+          <button
+            onClick={() => setQrModalOpen(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gold/20 text-gold-bright border border-gold/40 hover:bg-gold/30 hover:border-gold-bright transition-all text-xs font-semibold shadow-sm"
+            title="Physical Lobby Display & Elevator QR Code"
+          >
+            <QrCode className="w-4 h-4 text-gold-bright" />
+            <span className="hidden sm:inline">Lobby QR</span>
+          </button>
+
+          {/* Language Selection Dropdown */}
+          <div className="relative">
           <button
             onClick={() => setLangMenuOpen(!langMenuOpen)}
             className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-espresso text-surface border border-gold/40 hover:border-gold-bright transition-all text-xs font-medium"
@@ -252,7 +266,8 @@ export default function Home() {
             </div>
           )}
         </div>
-      </header>
+      </div>
+    </header>
 
       {/* MAIN CONTAINER */}
       <main className="flex-1 max-w-5xl w-full mx-auto p-4 md:p-6 flex flex-col gap-6">
@@ -557,6 +572,9 @@ export default function Home() {
           </p>
         </footer>
       </main>
+
+      {/* Lobby & Elevator Physical Display QR Modal */}
+      <LobbyQrModal isOpen={qrModalOpen} onClose={() => setQrModalOpen(false)} />
     </div>
   );
 }
