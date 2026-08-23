@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -6,6 +6,14 @@ export const metadata: Metadata = {
   description: "Official 24/7 AI resident concierge system for Crest Grande - Tower A, Sobha Hartland, MBR City, Dubai. Instant access to amenities, visitor passes, maintenance, and building info in any language.",
   keywords: ["Crest Grande", "Sobha Hartland", "Tower A", "Dubai Concierge", "Al Bayan AI", "Luxury Resident Assistant", "Meydan", "Sobha Realty"],
   authors: [{ name: "Al Bayan AI Concierge Systems" }],
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
@@ -23,7 +31,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="h-full bg-canvas text-espresso antialiased flex flex-col selection:bg-gold selection:text-white">
+      <body className="h-full bg-canvas text-espresso antialiased flex flex-col selection:bg-gold selection:text-white overflow-x-hidden">
         {children}
       </body>
     </html>
