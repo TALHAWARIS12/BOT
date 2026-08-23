@@ -94,7 +94,7 @@ const QUICK_ACTIONS: QuickAction[] = [
     icon: <UserCheck className="w-5 h-5" />,
     label: "Visitor Pass",
     sub: "Gate passes & parking",
-    prompt: "Generate a digital visitor pass for my guest visiting Unit 1402 today for 4 hours. Plate: DUBAI A-84920",
+    prompt: "How do I arrange a visitor pass or guest parking at Crest Grande Tower A?",
   },
   {
     icon: <Package className="w-5 h-5" />,
@@ -106,7 +106,7 @@ const QUICK_ACTIONS: QuickAction[] = [
     icon: <Wrench className="w-5 h-5" />,
     label: "Maintenance",
     sub: "Repairs & AC 24/7",
-    prompt: "Report an AC cooling breakdown in unit 1805 requiring urgent engineer support.",
+    prompt: "How do I request maintenance or report a repair issue at Tower A?",
   },
   {
     icon: <Building2 className="w-5 h-5" />,
@@ -172,8 +172,7 @@ export default function Home() {
         id: "welcome",
         role: "assistant",
         content:
-          LANGUAGES[1].greeting +
-          "\n\nI am your 24/7 digital concierge for **Crest Grande – Tower A, Sobha Hartland**. I can generate visitor passes, reserve BBQ zones, dispatch emergency maintenance, or answer any community inquiries.",
+          "Welcome! I'm your AI Resident Assistant.\nAsk me anything about your community, anytime, in any language. 🌍\nHow can I help today?",
       },
     ],
     onFinish: () => setToolStatus(null),
