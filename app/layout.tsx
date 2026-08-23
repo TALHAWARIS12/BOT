@@ -10,15 +10,15 @@ export const metadata: Metadata = {
     "Al Bayan AI", "Luxury Resident Assistant", "Sobha Realty",
   ],
   authors: [{ name: "Al Bayan AI Concierge Systems" }],
-  themeColor: "#231B17",
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   minimumScale: 1,
-  maximumScale: 5,           // allow pinch-zoom for accessibility
-  viewportFit: "cover",      // handles iPhone notch / Dynamic Island
+  maximumScale: 5,
+  viewportFit: "cover",
+  themeColor: "#231B17",
 };
 
 export default function RootLayout({
