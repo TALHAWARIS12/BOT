@@ -9,7 +9,6 @@ import {
   X,
   Sparkles,
   ShieldCheck,
-  UserCheck,
   Wrench,
   Package,
   MapPin,
@@ -42,7 +41,7 @@ const LANGUAGES: Language[] = [
   {
     code: "ar", name: "Arabic", native: "العربية", flag: "🇦🇪", dir: "rtl",
     greeting: "مرحباً بك في برج كريست جراند (برج أ). كيف يمكنني مساعدتك اليوم؟",
-    placeholder: "اطرح سؤالك أو اطلب تصريح زائر...",
+    placeholder: "اطرح سؤالك عن برج أ...",
   },
   {
     code: "en", name: "English", native: "English", flag: "🇬🇧", dir: "ltr",
@@ -89,12 +88,6 @@ const QUICK_ACTIONS: QuickAction[] = [
     label: "Amenities",
     sub: "Pool, Gym, BBQ & Sauna",
     prompt: "What are the swimming pool, gym, BBQ area, and sauna hours for Crest Grande Tower A?",
-  },
-  {
-    icon: <UserCheck className="w-5 h-5" />,
-    label: "Visitor Pass",
-    sub: "Gate passes & parking",
-    prompt: "How do I arrange a visitor pass or guest parking at Crest Grande Tower A?",
   },
   {
     icon: <Package className="w-5 h-5" />,
