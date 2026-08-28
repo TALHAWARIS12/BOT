@@ -82,38 +82,232 @@ interface QuickAction {
   prompt: string;
 }
 
-const QUICK_ACTIONS: QuickAction[] = [
-  {
-    icon: <Flame className="w-5 h-5" />,
-    label: "Amenities",
-    sub: "Pool, Gym, BBQ & Sauna",
-    prompt: "What are the swimming pool, gym, BBQ area, and sauna hours for Crest Grande Tower A?",
-  },
-  {
-    icon: <Package className="w-5 h-5" />,
-    label: "Deliveries",
-    sub: "Parcels & couriers",
-    prompt: "How are food deliveries and courier parcel collections handled at Tower A?",
-  },
-  {
-    icon: <Wrench className="w-5 h-5" />,
-    label: "Maintenance",
-    sub: "Repairs & AC 24/7",
-    prompt: "How do I request maintenance or report a repair issue at Tower A?",
-  },
-  {
-    icon: <Building2 className="w-5 h-5" />,
-    label: "Building Info",
-    sub: "NOC, rules & elevators",
-    prompt: "What are the move-in, move-out, elevator booking, and Sobha NOC procedures?",
-  },
-  {
-    icon: <MapPin className="w-5 h-5" />,
-    label: "Nearby",
-    sub: "Schools & landmarks",
-    prompt: "What are the nearest schools, supermarkets, and drive times to Downtown and DXB?",
-  },
-];
+const QUICK_ACTIONS_BY_LANG: Record<string, QuickAction[]> = {
+  en: [
+    {
+      icon: <Flame className="w-5 h-5" />,
+      label: "Amenities",
+      sub: "Pool, Gym, BBQ & Sauna",
+      prompt: "What are the swimming pool, gym, BBQ area, and sauna hours for Crest Grande Tower A?",
+    },
+    {
+      icon: <Package className="w-5 h-5" />,
+      label: "Deliveries",
+      sub: "Parcels & couriers",
+      prompt: "How are food deliveries and courier parcel collections handled at Tower A?",
+    },
+    {
+      icon: <Wrench className="w-5 h-5" />,
+      label: "Maintenance",
+      sub: "Repairs & AC 24/7",
+      prompt: "How do I request maintenance or report a repair issue at Tower A?",
+    },
+    {
+      icon: <Building2 className="w-5 h-5" />,
+      label: "Building Info",
+      sub: "NOC, rules & elevators",
+      prompt: "What are the move-in, move-out, elevator booking, and Sobha NOC procedures?",
+    },
+    {
+      icon: <MapPin className="w-5 h-5" />,
+      label: "Nearby",
+      sub: "Schools & landmarks",
+      prompt: "What are the nearest schools, supermarkets, and drive times to Downtown and DXB?",
+    },
+  ],
+  fr: [
+    {
+      icon: <Flame className="w-5 h-5" />,
+      label: "Équipements",
+      sub: "Piscine, Gym, BBQ & Sauna",
+      prompt: "Quels sont les horaires de la piscine, de la salle de sport, de l'espace BBQ et du sauna pour la Tour A de Crest Grande ?",
+    },
+    {
+      icon: <Package className="w-5 h-5" />,
+      label: "Livraisons",
+      sub: "Colis & courriers",
+      prompt: "Comment les livraisons de nourriture et la collecte de colis par les livreurs sont-elles gérées à la Tour A ?",
+    },
+    {
+      icon: <Wrench className="w-5 h-5" />,
+      label: "Maintenance",
+      sub: "Réparations & Climatisation 24/7",
+      prompt: "Comment demander une intervention de maintenance ou signaler un problème de réparation à la Tour A ?",
+    },
+    {
+      icon: <Building2 className="w-5 h-5" />,
+      label: "Infos Bâtiment",
+      sub: "NOC, règles & ascenseurs",
+      prompt: "Quelles sont les procédures d'emménagement, de déménagement, de réservation d'ascenseur et le NOC Sobha ?",
+    },
+    {
+      icon: <MapPin className="w-5 h-5" />,
+      label: "À proximité",
+      sub: "Écoles & repères",
+      prompt: "Quelles sont les écoles et supermarchés les plus proches, et les temps de trajet vers Downtown et DXB ?",
+    },
+  ],
+  ar: [
+    {
+      icon: <Flame className="w-5 h-5" />,
+      label: "المرافق",
+      sub: "المسبح، الجيم، الشواء والساونا",
+      prompt: "ما هي مواعيد وأوقات عمل مسبح الأطفال والكبار، الصالة الرياضية، منطقة الشواء والساونا في برج كريست جراند (برج أ)؟",
+    },
+    {
+      icon: <Package className="w-5 h-5" />,
+      label: "التوصيل والطرود",
+      sub: "استلام الطرود والمطاعم",
+      prompt: "كيف تتم إدارة توصيل الوجبات واستلام الطرود والبريد في برج أ؟",
+    },
+    {
+      icon: <Wrench className="w-5 h-5" />,
+      label: "الصيانة",
+      sub: "إصلاحات والتكييف 24/7",
+      prompt: "كيف يمكنني تقديم طلب صيانة أو الإبلاغ عن عطل في التكييف أو السباكة في برج أ؟",
+    },
+    {
+      icon: <Building2 className="w-5 h-5" />,
+      label: "معلومات المبنى",
+      sub: "شهادة عدم مانع (NOC) والمصاعد",
+      prompt: "ما هي إجراءات الانتقال، حجز مصعد الخدمات، والحصول على شهادة Sobha NOC في برج أ؟",
+    },
+    {
+      icon: <MapPin className="w-5 h-5" />,
+      label: "الأماكن القريبة",
+      sub: "المدارس والمخارج",
+      prompt: "ما هي أقرب المدارس والسوبرماركت وزمن القيادة إلى وسط مدينة دبي ومطار دبي الدولي؟",
+    },
+  ],
+  hi: [
+    {
+      icon: <Flame className="w-5 h-5" />,
+      label: "सुविधाएं (Amenities)",
+      sub: "पूल, जिम, बीबीक्यू और सौना",
+      prompt: "क्रेस्ट ग्रांडे टावर ए के स्विमिंग पूल, जिम, बीबीक्यू क्षेत्र और सौना के संचालन समय क्या हैं?",
+    },
+    {
+      icon: <Package className="w-5 h-5" />,
+      label: "डिलीवरी (Deliveries)",
+      sub: "पार्सल और कूरियर",
+      prompt: "टावर ए में भोजन वितरण और कूरियर पार्सल संग्रह का प्रबंधन कैसे किया जाता है?",
+    },
+    {
+      icon: <Wrench className="w-5 h-5" />,
+      label: "रखरखाव (Maintenance)",
+      sub: "मरम्मत और एसी 24/7",
+      prompt: "मैं टावर ए में रखरखाव का अनुरोध कैसे करूं या मरम्मत समस्या की रिपोर्ट कैसे करूं?",
+    },
+    {
+      icon: <Building2 className="w-5 h-5" />,
+      label: "भवन जानकारी (Building Info)",
+      sub: "NOC, नियम और लिफ्ट",
+      prompt: "मूव-इन, मूव-आउट, लिफ्ट बुकिंग और शोभा NOC की प्रक्रियाएं क्या हैं?",
+    },
+    {
+      icon: <MapPin className="w-5 h-5" />,
+      label: "आस-पास (Nearby)",
+      sub: "स्कूल और स्थल",
+      prompt: "निकटतम स्कूल, सुपरमार्केट और डाउनटाउन और डीएक्सबी के लिए ड्राइविंग का समय क्या है?",
+    },
+  ],
+  zh: [
+    {
+      icon: <Flame className="w-5 h-5" />,
+      label: "配套设施",
+      sub: "泳池、健身房、烧烤及桑拿",
+      prompt: "Crest Grande Tower A 的游泳池、健身房、烧烤区和桑拿房的开放时间是什么？",
+    },
+    {
+      icon: <Package className="w-5 h-5" />,
+      label: "快递外卖",
+      sub: "外卖与包裹收取",
+      prompt: "Tower A 如何处理外卖送达和快递包裹收取？",
+    },
+    {
+      icon: <Wrench className="w-5 h-5" />,
+      label: "物业维修",
+      sub: "24/7 空调与设施维修",
+      prompt: "如何在 Tower A 申请维修服务或报修故障？",
+    },
+    {
+      icon: <Building2 className="w-5 h-5" />,
+      label: "大楼信息",
+      sub: "NOC、搬家及电梯预订",
+      prompt: "入住、搬出、货梯预订和 Sobha NOC 的流程是什么？",
+    },
+    {
+      icon: <MapPin className="w-5 h-5" />,
+      label: "周边设施",
+      sub: "学校与地标距离",
+      prompt: "附近有哪些学校、超市？前往市中心 Downtown 和 DXB 机场的车程是多久？",
+    },
+  ],
+  ru: [
+    {
+      icon: <Flame className="w-5 h-5" />,
+      label: "Удобства",
+      sub: "Бассейн, спортзал, барбекю и сауна",
+      prompt: "Каковы часы работы бассейна, тренажерного зала, зоны барбекю и сауны в Crest Grande Tower A?",
+    },
+    {
+      icon: <Package className="w-5 h-5" />,
+      label: "Доставка",
+      sub: "Посылки и курьеры",
+      prompt: "Как организована доставка еды и получение посылок в Tower A?",
+    },
+    {
+      icon: <Wrench className="w-5 h-5" />,
+      label: "Техническое обслуживание",
+      sub: "Ремонт и кондиционирование 24/7",
+      prompt: "Как подать заявку на техническое обслуживание или сообщить о поломке в Tower A?",
+    },
+    {
+      icon: <Building2 className="w-5 h-5" />,
+      label: "Информация о здании",
+      sub: "NOC, правила и лифты",
+      prompt: "Каков порядок въезда, выезда, бронирования лифта и получения Sobha NOC?",
+    },
+    {
+      icon: <MapPin className="w-5 h-5" />,
+      label: "Рядом",
+      sub: "Школы и ориентиры",
+      prompt: "Какие ближайшие школы и супермаркеты, и сколько времени занимает дорога до Downtown и DXB?",
+    },
+  ],
+  es: [
+    {
+      icon: <Flame className="w-5 h-5" />,
+      label: "Comodidades",
+      sub: "Piscina, gimnasio, barbacoa y sauna",
+      prompt: "¿Cuáles son los horarios de la piscina, gimnasio, área de barbacoa y sauna en Crest Grande Tower A?",
+    },
+    {
+      icon: <Package className="w-5 h-5" />,
+      label: "Entregas",
+      sub: "Paquetes y mensajería",
+      prompt: "¿Cómo se gestionan las entregas de comida y la recogida de paquetes en la Torre A?",
+    },
+    {
+      icon: <Wrench className="w-5 h-5" />,
+      label: "Mantenimiento",
+      sub: "Reparaciones y aire acondicionado 24/7",
+      prompt: "¿Cómo solicito mantenimiento o reporto un problema de reparación en la Torre A?",
+    },
+    {
+      icon: <Building2 className="w-5 h-5" />,
+      label: "Información del Edificio",
+      sub: "NOC, normas y ascensores",
+      prompt: "¿Cuáles son los procedimientos de mudanza, reserva de ascensor y NOC de Sobha?",
+    },
+    {
+      icon: <MapPin className="w-5 h-5" />,
+      label: "Cercanías",
+      sub: "Escuelas y lugares de interés",
+      prompt: "¿Cuáles son los colegios y supermercados más cercanos y el tiempo de viaje a Downtown y DXB?",
+    },
+  ],
+};
 
 /* ─── TOOL LABEL DETECTOR ────────────────────────────────────── */
 function detectToolLabel(q: string): string {
@@ -157,9 +351,16 @@ export default function Home() {
   const bottomRef = useRef<HTMLDivElement>(null);
   const langRef = useRef<HTMLDivElement>(null);
 
+  /* Get localized quick actions */
+  const currentQuickActions = QUICK_ACTIONS_BY_LANG[selectedLang.code] || QUICK_ACTIONS_BY_LANG["en"];
+
   /* useChat hook */
   const { messages, input, handleInputChange, append, isLoading, setInput, setMessages } = useChat({
     api: "/api/chat",
+    body: {
+      language: selectedLang.name,
+      languageCode: selectedLang.code,
+    },
     initialMessages: [
       {
         id: "welcome",
@@ -216,7 +417,10 @@ export default function Home() {
 
     setAttachedFile(null);
     setInput("");
-    await append({ role: "user", content: finalText });
+    await append(
+      { role: "user", content: finalText },
+      { body: { language: selectedLang.name, languageCode: selectedLang.code } }
+    );
   }, [attachedFile, isLoading, selectedLang, append, setInput]);
 
   /* ─── RENDER ─── */
@@ -369,7 +573,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
-            {QUICK_ACTIONS.map((action) => (
+            {currentQuickActions.map((action) => (
               <button
                 key={action.label}
                 onClick={() => submitQuery(action.prompt)}

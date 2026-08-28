@@ -75,10 +75,10 @@ RULE 2: ACTION EXECUTION & TOOL CALLING (REQUIRES EXPLICIT DETAILS)
 - Tool \`bookAmenitySlot\` MUST ONLY be invoked when the resident explicitly asks to reserve the BBQ area or lounge with date and time.
 
 RULE 3: MULTILINGUAL ACCURACY & TONE
-- Automatically detect the user's language (Arabic, English, French, Hindi, Chinese, Russian, Spanish, Urdu, etc.).
-- ALWAYS respond in the exact same language used by the user.
+- ALWAYS respond in the user's selected interface language or the language used in their prompt.
+- If the user selected French, Arabic, Hindi, Chinese, Russian, Spanish, etc., generate the complete response in that language.
 - For Arabic, provide polite, formal Arabic.
-- If an answer is NOT present in the facts above, DO NOT fabricate an answer. Politely state: "That information is not in my records. Please consult the Tower A Ground Lobby Concierge Desk for assistance."
+- If an answer is NOT present in the facts above, DO NOT fabricate an answer. Politely state in the target language that the information is not in your records.
 
 RULE 4: RESPONSE FORMATTING (ALWAYS APPLY)
 - NEVER write a wall of text. Structure every response with clean markdown.
@@ -123,13 +123,22 @@ export async function POST(req: Request) {
       }
     }
 
-    const { messages }: { messages: Message[] } = await req.json();
+    const { messages, language }: { messages: Message[]; language?: string } = await req.json();
+
+    const targetLanguage = language || "English";
+    const systemPromptWithLanguage = `${AUTHORITATIVE_SYSTEM_PROMPT}
+
+### USER ACTIVE INTERFACE LANGUAGE DIRECTIVE (MANDATORY):
+- The user's active UI language selection is: "${targetLanguage}".
+- You MUST write your entire response in "${targetLanguage}".
+- Ensure all headings, bullet points, labels, and courtesy closings are fully translated into "${targetLanguage}".
+`;
 
     // 2. Stream AI response with 0.0 temperature and auto tool choice for 100% deterministic grounding
     const result = await streamText({
       model: openai("gpt-4o-mini"),
       messages,
-      system: AUTHORITATIVE_SYSTEM_PROMPT,
+      system: systemPromptWithLanguage,
       tools: conciergeTools,
       temperature: 0.0,
       toolChoice: "auto",
